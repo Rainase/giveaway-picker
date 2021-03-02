@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { StoreProvider, createStore } from "easy-peasy";
+import model from './Models'
+const store = createStore(model)
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <StoreProvider store={store}>
+      <App />
+    </StoreProvider>
+  </BrowserRouter>
+  ,
   document.getElementById('root')
 );
 
