@@ -14,14 +14,16 @@ const Login = () => {
   const fbAuth = () => () => {
     auth.signInWithPopup(facebook.addScope('pages_read_engagement, instagram_manage_comments, instagram_basic, pages_show_list')).then((result) => {
       db.collection('users').doc(result.user.providerData[0].uid).set({
-        access_token: result.credential.accessToken
+        access_token: result.credential.accessToken,
+        displayName: result.user.displayName,
+        email: result.user.email
       }).then(
         getUserAccounts(result.credential.accessToken).then((result) => {
           setFbAccounts(result)
         })
       )
+      history.push('/app')
     })
-    history.push('/app')
   }
  
   const logout = () => () => {
