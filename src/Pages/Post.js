@@ -28,7 +28,6 @@ const PostPage = () => {
   });
 
   const wihtoutCurrentUser = userArr.filter((item) => item !== igAccounts.username);
-  // const removeDuplicates = wihtoutCurrentUser.filter((item, index) => wihtoutCurrentUser.indexOf(item) === index)
   const removeDuplicates = Object.values(wihtoutCurrentUser.reduce((result, myString) => {
     result[myString] = myString
     return result
@@ -43,17 +42,17 @@ const PostPage = () => {
   }
 useEffect(() => {
   fetchComments()
-},[])
+},[postId])
 
   // console.log(pickerDuplicates ? removeDuplicates : wihtoutCurrentUser)
   return ( 
-    <div className='w-4/5 mx-auto flex flex-col h-screen  overflow-scroll md:overflow-visible'>
+    <div className='flex flex-col w-4/5 h-screen mx-auto overflow-scroll md:overflow-visible'>
       <Breadcrumbs />
       <div className='flex w-4/5 mx-auto my-4'>
       <RandomPicker items={pickerDuplicates ? removeDuplicates : wihtoutCurrentUser}/>
       </div>
         <AnimatePresence>
-      <div className=' select-none flex flex-col flex-1'>
+      <div className='flex flex-col flex-1 select-none '>
         {comments.length === 0 && <Loading />}
         {comments && comments.map(({ id, username, text, replies},i) => (
           <motion.div
@@ -79,14 +78,14 @@ useEffect(() => {
             custom={i}
             initial='hidden'
             key={id + Math.random(33)} 
-            className='m-2 p-2 rounded-md grid-cols-4 gap-4 bg-gray-100 dark:bg-lessDarker shadow-lg hover:opacity-90'>
-            <a href={`https://www.instagram.com/${username}`} target='_blank' rel='noreferrer' className='text-primary flex'>
+            className='grid-cols-4 gap-4 p-2 m-2 bg-gray-100 rounded-md shadow-lg dark:bg-lessDarker hover:opacity-90'>
+            <a href={`https://www.instagram.com/${username}`} target='_blank' rel='noreferrer' className='flex text-primary'>
               @{username} <ExternalLinkIcon />
             </a>
             <div>{text}
               {replies ? replies.data.map(({ username, text, id}, i) => (
-                <div key={id + Math.random(33)} className='dark:bg-gray-700 bg-gray-200 m-2 rounded-md p-1 shadow-md'>
-                  <a href={`https://www.instagram.com/${username}`} target='_blank' rel='noreferrer' className='text-primary flex'>
+                <div key={id + Math.random(33)} className='p-1 m-2 bg-gray-200 rounded-md shadow-md dark:bg-gray-700'>
+                  <a href={`https://www.instagram.com/${username}`} target='_blank' rel='noreferrer' className='flex text-primary'>
                     @{username} <ExternalLinkIcon />
                   </a>{text}
                 </div>

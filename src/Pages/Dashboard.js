@@ -31,11 +31,11 @@ const DashboardPage = () => {
   const getFbPosts = async (id) => {
     location.push(`/app/fb/${id}`)
   }
-  test()
+  // test()
   return (
     <>
-    <section className='flex flex-1 flex-col'>
-      <h1 className='text-3xl select-none font-semibold text-lessDarker m-2 dark:text-white'>Dashboard</h1>
+    <section className='flex flex-col flex-1'>
+      <h1 className='m-2 text-3xl font-semibold select-none text-lessDarker dark:text-white'>Dashboard</h1>
       <div className='flex flex-wrap mx-4'>
         <FBAccountCard fbAccounts={fbAccounts} onClick={getIgPosts}/>
       </div>

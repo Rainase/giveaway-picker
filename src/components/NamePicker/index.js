@@ -63,7 +63,7 @@ const RandomPicker = ({ items }) => {
   </svg>
   )
   const StarIcon = () => (
-    <svg className='w-20 animate-spin-slow ease-in-out text-yellow-400' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <svg className='w-20 text-yellow-400 ease-in-out animate-spin-slow' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
     </svg>
   )
@@ -82,25 +82,25 @@ const RandomPicker = ({ items }) => {
     }
     useEffect(() => {
       if(!isRunning) return showConfetti()
-    })
+    },[isRunning])
 
     return (
       <div className={`${gameOpen ? 'fixed': 'hidden'} fixed inset-0 bg-lessDarker bg-opacity-70 transition-all ease-in-out delay-300 z-30`}>
-          <div className='absolute pointer-events-none inset-0 z-30' ref={confettiContainer}></div>
-        <div className='sm:w-3/6 absolute w-full sm:inset-1/4 inset-1 bg-white dark:bg-darker shadow-md border-lessDarker border rounded-md p-4'>
+          <div className='absolute inset-0 z-30 pointer-events-none' ref={confettiContainer}></div>
+        <div className='absolute w-full p-4 bg-white border rounded-md shadow-md sm:w-3/6 sm:inset-1/4 inset-1 dark:bg-darker border-lessDarker'>
         <div
           onClick={isRunning ? () => console.log('game still running') : () => setGameOpen(!gameOpen)}
-          className='right-5 absolute p-1 rounded-full hover:bg-lessDarker cursor-pointer select-none'>
+          className='absolute p-1 rounded-full cursor-pointer select-none right-5 hover:bg-lessDarker'>
           <CloseIcon />
         </div>
-          <div className='mt-8 flex justify-around'>
+          <div className='flex justify-around mt-8'>
           {isRunning ? '' : <StarIcon />}
           </div>
-          <div className='animate-bounce transition-all ease-in-out delay-500 text-4xl mt-8 flex justify-around text-darker dark:text-white select-none'>
+          <div className='flex justify-around mt-8 text-4xl transition-all ease-in-out delay-500 select-none animate-bounce text-darker dark:text-white'>
             {!isRunning && currentChoice !== '' ? 
             <a className='flex cursor-pointer' rel="noreferrer" target='_blank' href={`https://www.instagram.com/${currentChoice}`}>{currentChoice}<ExternalLink className='w-4 h-4'/></a> : ''}
           </div>
-          <div className='mt-12 flex justify-around animate-pulse text-lg'>
+          <div className='flex justify-around mt-12 text-lg animate-pulse'>
           {isRunning ? currentChoice : ''}
           </div>
         

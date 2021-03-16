@@ -4,7 +4,7 @@ import { Logo } from "../TopBar";
 
 const Footer = () => {
   return (
-    <footer className="text-gray-700 bg-white dark:bg-darker body-font fixed bottom-0 right-0 left-0">
+    <footer className="fixed bottom-0 left-0 right-0 text-gray-700 bg-white dark:bg-darker body-font">
     <div className="container flex flex-col items-center px-8 pt-8 mx-auto max-w-7xl sm:flex-row">
         <Logo />
         <p className="mt-4 text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l sm:border-gray-200 sm:mt-0">&copy; 2020 created by
@@ -31,7 +31,7 @@ const Footer = () => {
             </a>
         </span>
     </div>
-    <div className='px-16 mb-3 mx-auto text-sm max-w-7xl'>
+    <div className='px-16 mx-auto mb-3 text-sm max-w-7xl'>
       <Link className='mr-2' to='/terms'>Terms</Link>
       <Link to='/privacy'>Privacy</Link>
     </div>

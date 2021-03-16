@@ -49,13 +49,13 @@ const InstagramAccountsPage = () => {
       <Breadcrumbs />
       <Toast data={toasts}/>
       {igAccounts ? (
-        <div className='w-60 select-none flex bg-gradient-to-br from-primary to-purple-500 rounded-lg p-4 items-center justify-around mx-auto shadow-lg'>
-          <div className='relative w-12 h-12 bg-white shadow-lg rounded-full'>
+        <div className='flex items-center justify-around p-4 mx-auto rounded-lg shadow-lg select-none w-60 bg-gradient-to-br from-primary to-purple-500'>
+          <div className='relative w-12 h-12 bg-white rounded-full shadow-lg'>
               <div className='absolute p-0.5'>
               <img className='rounded-full' src={igAccounts.profile_picture_url} alt={igAccounts.name}/>
               </div>
             </div>
-        <div className='cursor-none text-sm text-white font-semibold'>
+        <div className='text-sm font-semibold text-white cursor-none'>
           <p>Followers: {igAccounts.followers_count}</p>
           <p>Follows: {igAccounts.follows_count}</p>
           <p>Media: {igAccounts.media_count}</p>
@@ -91,12 +91,12 @@ const InstagramAccountsPage = () => {
               initial='hidden'
                 onClick={goToPostPage(id, comments)}
                 key={id}
-                className='w-full lg:w-3/5 m-4 select-none flex flex-col bg-gray-50 dark:bg-lessDarker dark:border border-lessDarker cursor-pointer rounded-lg p-4 hover:bg-opacity-80 transition-all duration-400 ease-in-out shadow-md hover:shadow-lg text-lessDarker dark:text-white'>
+                className='flex flex-col w-full p-4 m-4 transition-all ease-in-out rounded-lg shadow-md cursor-pointer select-none lg:w-3/5 bg-gray-50 dark:bg-lessDarker dark:border border-lessDarker hover:bg-opacity-80 duration-400 hover:shadow-lg text-lessDarker dark:text-white'>
                 <div className='flex w-full '>
-                  <img className='rounded-lg mr-4 h-20 w-20' src={media_type === 'VIDEO'  ? thumbnail_url : media_url} alt={caption}/>
+                  <img className='w-20 h-20 mr-4 rounded-lg' src={media_type === 'VIDEO'  ? thumbnail_url : media_url} alt={caption}/>
                   <div className='' >{caption?.slice(0,240)}</div>
                 </div>
-                <div className='flex w-20 justify-between mt-2'>
+                <div className='flex justify-between w-20 mt-2'>
                   <div className='flex'>
                     <svg className='w-5' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />

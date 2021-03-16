@@ -2,7 +2,7 @@ import { action } from "easy-peasy";
 
 export const ui = {
   toasts: [],
-  pickerDuration: 10000,
+  pickerDuration: 5000,
   pickerDuplicates: false,
   pickerReplies: true,
   showPickerSettings: false,
